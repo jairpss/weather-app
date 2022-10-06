@@ -1,21 +1,47 @@
-import React from 'react'
+import { useState } from 'react'
+import useWeather from '../hooks/useWeather'
 
 const Form = () => {
+
+    const [alert, setAlert] = useState('')
+    const { search, dataSearch, getWeather } = useWeather()
+    const { city, country } = search
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        if(Object.values(search).includes('')){
+            setAlert('* Please select city and country *')
+            return
+        }
+        getWeather(search)
+
+    }
+
   return (
     <div className="container">
-        <form>
+        {alert && <p className="alert">{alert}</p>}
+        <form
+            onSubmit={handleSubmit}
+        >
             <div className="field">
                 <label htmlFor="city">City</label>
                 <input 
                     type="text"
                     id="city"
                     name="city"
+                    onChange={dataSearch}
+                    value={city}
                 />
             </div>
 
             <div className="field">
                 <label htmlFor="country">Country</label>
-                <select id="country" name="country">
+                <select 
+                    id="country" 
+                    name="country"
+                    onChange={dataSearch}
+                    value={country}
+                >
                     <option value="">--Select a country--</option>
                     <option value="US">United States</option>
                     <option value="MX">Mexico</option>
