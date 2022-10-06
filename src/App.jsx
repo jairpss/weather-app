@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import AppWeather from './components/AppWeather'
+import { WeatherProvider } from './context/WeatherProvider'
 
 function App() {
 
   return (
-    <div className="App">
+    <WeatherProvider>
+      <header>
+        <h1>Weather app</h1>
+      </header>
       <AppWeather />
-    </div>
+    </WeatherProvider>
   )
 }
 
