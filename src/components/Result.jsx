@@ -9,7 +9,7 @@ const Result = () => {
 
     return (
         <div className="container">
-            <h2 className="weather-title">The weather in <span>{name}</span> is:</h2>
+            <h2 className="weather-title">Weather in <span>{name}</span>:</h2>
 
             <p className="weather-current">
                 {parseInt(main.temp - kelvin)}°

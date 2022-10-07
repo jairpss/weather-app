@@ -12,6 +12,7 @@ const WeatherProvider = ({children}) => {
 
     const [result, setResult] = useState({})
     const [loading, setLoading] = useState(false)
+    const [noResult, setNoResult] = useState(false)
 
     const dataSearch = e => {
         setSearch({
@@ -22,6 +23,7 @@ const WeatherProvider = ({children}) => {
 
     const getWeather = async datos => {
         setLoading(true)
+        setNoResult(false)
         try {
             const { city, country } = datos
 
@@ -36,9 +38,11 @@ const WeatherProvider = ({children}) => {
             const { data: weather } = await axios(urlWeather)
             setResult(weather)
 
-            setLoading(false)
+            
         } catch (error) {
-            console.log(error)
+            setNoResult('City not found 😪')
+        } finally {
+            setLoading(false)
         }
         
     }
@@ -50,7 +54,8 @@ const WeatherProvider = ({children}) => {
                 dataSearch,
                 getWeather,
                 result,
-                loading
+                loading,
+                noResult
             }}
         >
             {children}

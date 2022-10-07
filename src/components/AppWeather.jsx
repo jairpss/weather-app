@@ -5,13 +5,18 @@ import useWeather from '../hooks/useWeather'
 
 const AppWeather = () => {
 
-  const { result, loading } = useWeather()
+  const { result, loading, noResult } = useWeather()
 
   return (
     <>
         <main className="dos-columnas">
             <Form />
-            {loading ? <Spinner /> : result?.name && <Result />}
+            {
+              loading ? <Spinner /> : 
+              result?.name ? <Result /> :
+              noResult ? <p className="not-found">{noResult}</p> :  
+              ''
+            }
         </main>
     </>
   )

@@ -14,6 +14,7 @@ const Form = () => {
             setAlert('* Please select city and country *')
             return
         }
+        setAlert('')
         getWeather(search)
 
     }
