@@ -170,14 +170,16 @@ input[type="submit"]:hover{
 .weather-title{
   color: #393D4C;
   font-size: 2.3rem;
-  margin-bottom: 1rem;
+  text-align: center;
+  font-weight:600;
+  margin: 0;
 }
 .weather-title span{
   font-weight: 800;
 }
 .weather-current{
   text-align: center;
-  font-size: 8rem;
+  font-size: 9rem;
   font-weight: 800;
   color: #393D4C;
   margin-top: 1rem;
