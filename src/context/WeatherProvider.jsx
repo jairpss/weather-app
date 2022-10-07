@@ -4,6 +4,8 @@ const WeatherContext = createContext()
 
 const WeatherProvider = ({children}) => {
 
+    console.log(import.meta.env.VITE_API_KEY)
+
     const [search, setSearch] = useState({
         city: '',
         country: ''
