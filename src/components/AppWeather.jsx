@@ -1,16 +1,17 @@
 import Form from './Form'
 import Result from './Result'
+import Spinner from './Spinner'
 import useWeather from '../hooks/useWeather'
 
 const AppWeather = () => {
 
-  const { result } = useWeather()
+  const { result, loading } = useWeather()
 
   return (
     <>
         <main className="dos-columnas">
             <Form />
-            {result?.name && <Result />}
+            {loading ? <Spinner /> : result?.name && <Result />}
         </main>
     </>
   )
